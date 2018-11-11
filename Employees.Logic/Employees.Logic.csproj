@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Employees.DataAccess.EntityFramework\Employees.DataAccess.EntityFramework.csproj" />
+    <ProjectReference Include="..\Employees.DomainModels\Employees.DomainModels.csproj" />
+  </ItemGroup>
+
+</Project>

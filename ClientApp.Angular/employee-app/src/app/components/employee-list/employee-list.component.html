@@ -1,0 +1,27 @@
+<div class="mt-2 mb-2">
+  <button class="btn btn-success" [routerLink]="['/employee']" >Add new employee</button>
+</div>
+
+<div >
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Job Title</th>
+        <th scope="col">Employment Date</th>
+        <th scope="col">Rate</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{employee.fullName}}</td>
+        <td>{{employee.jobTitle}}</td>
+        <td>{{employee.employmentDate| date:"MM/dd/yy"}}</td>
+        <td>{{employee.rate}}$</td>
+        <td><a href="javascript:void(0);"  (click)="deleteEmployee(employee.id)">Delete</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

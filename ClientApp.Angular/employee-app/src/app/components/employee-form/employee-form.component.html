@@ -1,0 +1,67 @@
+<div class="mt-5">
+  <form #employeeForm="ngForm" (ngSubmit)="createEmployee()" novalidate>
+    <div class="form-group row">
+      <label for="firstName" class="col-md-3 col-form-label">First Name</label>
+      <div class="col-md-8">
+        <input type="text" class="form-control" id="firstName" placeholder="" name="firstName"
+        [(ngModel)]="employee.firstName" required #firstName="ngModel">
+        <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">Required</div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="lastName" class="col-md-3 col-form-label">Last Name</label>
+      <div class="col-md-8">
+        <input type="text" class="form-control" id="lastName" placeholder="" name="lastName"
+        [(ngModel)]="employee.lastName" required #lastName="ngModel">
+        <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">Required</div>
+      </div>
+    </div>
+
+  <div class="form-group row">
+      <label class="col-md-3 col-form-label">Employment Date</label>
+      <div class="col-md-8">
+        <input [(ngModel)]="employee.employmentDate"
+              [owlDateTimeTrigger]="dtPicker1" [owlDateTime]="dtPicker1"
+              name="employmentDate"
+              class="form-control"
+              placeholder="Date Time"
+              required #emplDate="ngModel">
+        <owl-date-time #dtPicker1></owl-date-time>
+        <div class="alert alert-danger" *ngIf="emplDate.dirty && !emplDate.valid">Required</div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="rate" class="col-md-3 col-form-label">Rate</label>
+    <div class="col-md-8">
+      <input type="number" class="form-control" id="rate" name="rate" placeholder=""
+      [(ngModel)]="employee.rate" required number #rate="ngModel">
+      <div class="alert alert-danger" *ngIf="rate.touched && !rate.valid">Required</div>
+    </div>
+  </div> 
+
+  <div class="form-group row">
+    <label class="col-md-3 col-form-label">Job Titles</label>
+    <div class="col-md-8">
+      <ng-multiselect-dropdown
+          [placeholder]=""
+          [data]="jobList"
+          [settings]="dropdownSettings"
+          (onSelect)="onItemSelect($event)"
+          (onDeSelect)="onItemDeSelect($event)" 
+      >
+      </ng-multiselect-dropdown>
+      <div class="alert alert-danger" *ngIf="isJobTitleHasError">Required</div>
+    </div>
+  </div> 
+
+  <div class="form-group row">
+    <div class="col-md-3"></div>
+    <div class="col-md-8">
+      <button [routerLink]="['/employees']" routerLinkActive="router-link-active"  type="button" class="btn btn-primary">Back</button>
+      <button [disabled]="!employeeForm.valid" type="submit" class="btn btn-primary ml-4">Save</button>
+    </div>
+  </div>
+  </form>
+</div>
